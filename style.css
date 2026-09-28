@@ -1,0 +1,1619 @@
+/* =========================================================
+   ENTRE CÉLULAS
+   REVISTA DIGITAL · MITOSIS Y MEIOSIS
+========================================================= */
+
+:root{
+    --cream:#f3eee4;
+    --paper:#faf7f0;
+    --ink:#25251f;
+    --muted:#68665d;
+    --olive:#66705a;
+    --olive-dark:#414a39;
+    --sage:#dce0d1;
+    --rust:#a85e42;
+    --rust-dark:#713e2d;
+    --sand:#ded3bd;
+    --line:#c9c0af;
+    --white:#fffdf8;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#d8d2c7;
+    color:var(--ink);
+    font-family:"DM Sans",Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font:inherit;
+}
+
+.magazine{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.page{
+    width:210mm;
+    height:297mm;
+    min-height:297mm;
+    max-height:297mm;
+    position:relative;
+    overflow:hidden;
+    background:var(--paper);
+    padding:18mm 18mm 17mm;
+    margin:20px auto;
+    box-shadow:0 10px 40px rgba(35,30,20,.18);
+    display:none;
+    flex-direction:column;
+}
+
+.page.active{
+    display:flex;
+}
+
+.page-dark{
+    background:var(--ink);
+    color:#f6f0e5;
+}
+
+.page-olive{
+    background:var(--olive);
+    color:#f8f4ea;
+}
+
+.page-rust{
+    background:var(--rust);
+    color:#fff8ef;
+}
+
+/* =========================================================
+   TIPOGRAFÍA GENERAL
+========================================================= */
+
+h1,
+h2,
+h3,
+p{
+    margin:0;
+}
+
+h2{
+    font-family:"Libre Baskerville",Georgia,serif;
+    font-size:42px;
+    line-height:1.08;
+    letter-spacing:-1.4px;
+    margin-bottom:16px;
+}
+
+h3{
+    font-family:"Libre Baskerville",Georgia,serif;
+    font-size:23px;
+    line-height:1.2;
+}
+
+p{
+    font-size:16px;
+    line-height:1.62;
+}
+
+.eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2.8px;
+    text-transform:uppercase;
+    margin-bottom:13px;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:30px;
+    font-size:10px;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.page-dark header,
+.page-olive header,
+.page-rust header{
+    border-color:rgba(255,255,255,.3);
+}
+
+.section-head{
+    margin-bottom:27px;
+}
+
+.section-head.center{
+    text-align:center;
+}
+
+.section-head > p:last-child{
+    max-width:760px;
+}
+
+.center{
+    align-items:center;
+}
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.cover{
+    padding:0;
+    color:white;
+    background:#25251f;
+}
+
+.cover-image{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.cover-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.8) contrast(1.05);
+}
+
+.cover-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,22,17,.58) 0%,
+            rgba(20,22,17,.12) 30%,
+            rgba(20,22,17,.30) 55%,
+            rgba(20,22,17,.88) 100%
+        );
+}
+
+.cover-label{
+    position:absolute;
+    top:17mm;
+    left:18mm;
+    right:18mm;
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    border-bottom:1px solid rgba(255,255,255,.55);
+    padding-bottom:10px;
+}
+
+.cover-main{
+    position:absolute;
+    left:18mm;
+    right:18mm;
+    top:75mm;
+}
+
+.cover-main .eyebrow{
+    color:#e5d7b8;
+}
+
+.cover h1{
+    font-family:"Libre Baskerville",Georgia,serif;
+    font-size:76px;
+    line-height:.91;
+    letter-spacing:-4px;
+    font-weight:700;
+}
+
+.cover h1 span{
+    color:#d6b78b;
+    font-style:italic;
+}
+
+.cover-sub{
+    margin-top:25px;
+    max-width:110mm;
+    font-size:17px;
+    line-height:1.55;
+    color:#f6f0e4;
+}
+
+.cover-bottom{
+    position:absolute;
+    left:18mm;
+    right:18mm;
+    bottom:17mm;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:flex-end;
+    border-top:1px solid rgba(255,255,255,.5);
+    padding-top:13px;
+}
+
+.cover-names{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    font-size:11px;
+    line-height:1.35;
+}
+
+.cover-meta{
+    text-align:right;
+    font-size:10px;
+    line-height:1.7;
+    letter-spacing:.6px;
+}
+
+/* =========================================================
+   PÁGINA 2
+========================================================= */
+
+.hero-title{
+    max-width:160mm;
+    margin-bottom:38px;
+}
+
+.hero-title h2{
+    font-size:47px;
+    max-width:145mm;
+}
+
+.hero-title p:last-child{
+    max-width:130mm;
+    color:#d8d2c7;
+}
+
+.toc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-top:1px solid rgba(255,255,255,.3);
+    border-left:1px solid rgba(255,255,255,.3);
+}
+
+.toc-grid button{
+    min-height:42mm;
+    background:transparent;
+    color:inherit;
+    border:0;
+    border-right:1px solid rgba(255,255,255,.3);
+    border-bottom:1px solid rgba(255,255,255,.3);
+    text-align:left;
+    padding:18px;
+    display:flex;
+    gap:17px;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.toc-grid button:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.toc-grid b{
+    font-family:"Libre Baskerville",serif;
+    font-size:25px;
+    color:#cbb58d;
+}
+
+.toc-grid span{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    font-size:14px;
+    line-height:1.45;
+    color:#d5d0c6;
+}
+
+.toc-grid strong{
+    font-size:17px;
+    color:#fff;
+    letter-spacing:1px;
+}
+
+.fact-band{
+    margin-top:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,.3);
+    border-bottom:1px solid rgba(255,255,255,.3);
+}
+
+.fact-band div{
+    min-height:30mm;
+    padding:15px;
+    border-right:1px solid rgba(255,255,255,.3);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.fact-band div:last-child{
+    border-right:0;
+}
+
+.fact-band b{
+    font-family:"Libre Baskerville",serif;
+    font-size:35px;
+    color:#d2b989;
+}
+
+.fact-band span{
+    font-size:11px;
+    line-height:1.35;
+    color:#d7d1c5;
+}
+
+/* =========================================================
+   PÁGINA 3
+========================================================= */
+
+.page-intro{
+    display:grid;
+    grid-template-columns:1fr 40mm;
+    gap:22mm;
+    align-items:start;
+    margin-bottom:25px;
+}
+
+.page-intro .big-lead{
+    font-size:18px;
+    line-height:1.58;
+    max-width:125mm;
+}
+
+.number-card{
+    background:var(--olive);
+    color:white;
+    width:40mm;
+    height:48mm;
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.number-card.rust{
+    background:var(--rust);
+}
+
+.number-card span{
+    font-family:"Libre Baskerville",serif;
+    font-size:31px;
+}
+
+.number-card b{
+    font-size:12px;
+    letter-spacing:1.5px;
+    line-height:1.3;
+}
+
+.image-text{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    min-height:75mm;
+    margin-bottom:25px;
+    background:var(--sand);
+}
+
+.image-text img{
+    width:100%;
+    height:75mm;
+    object-fit:cover;
+}
+
+.image-text > div{
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.image-text h3{
+    margin-bottom:13px;
+}
+
+.image-text p{
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.three-columns{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.three-columns article{
+    padding:17px;
+    border-right:1px solid var(--line);
+}
+
+.three-columns article:last-child{
+    border-right:0;
+}
+
+.three-columns b{
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--rust);
+}
+
+.three-columns h3{
+    margin:7px 0;
+    font-size:20px;
+}
+
+.three-columns p{
+    font-size:13px;
+    line-height:1.48;
+}
+
+/* =========================================================
+   PÁGINA 4
+========================================================= */
+
+.page-olive .section-head{
+    max-width:155mm;
+}
+
+.phase-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    flex:1;
+}
+
+.phase-grid article{
+    position:relative;
+    background:#f4f0e6;
+    color:var(--ink);
+    padding:18px 20px;
+    min-height:67mm;
+    display:grid;
+    grid-template-columns:38px 1fr;
+    gap:10px;
+    align-content:start;
+}
+
+.phase-num{
+    font-family:"Libre Baskerville",serif;
+    font-size:26px;
+    color:var(--rust);
+}
+
+.phase-grid article span{
+    display:block;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:var(--rust-dark);
+    margin-bottom:5px;
+}
+
+.phase-grid article h3{
+    font-size:23px;
+    margin-bottom:9px;
+}
+
+.phase-grid article p{
+    font-size:13px;
+    line-height:1.5;
+    max-width:80mm;
+}
+
+.mini-cell{
+    position:absolute;
+    right:14px;
+    bottom:12px;
+    width:52px;
+    height:52px;
+    border:2px solid var(--olive);
+    border-radius:50%;
+}
+
+.mini-cell::before,
+.mini-cell::after{
+    content:"";
+    position:absolute;
+    background:var(--rust);
+    width:13px;
+    height:28px;
+    border-radius:50%;
+    top:10px;
+}
+
+.mini-cell::before{
+    left:9px;
+}
+
+.mini-cell::after{
+    right:9px;
+}
+
+.c2::before,
+.c2::after{
+    width:5px;
+    height:35px;
+    border-radius:5px;
+    top:7px;
+}
+
+.c2::before{
+    left:20px;
+}
+
+.c2::after{
+    right:20px;
+}
+
+.c3::before{
+    left:2px;
+}
+
+.c3::after{
+    right:2px;
+}
+
+.c4::before,
+.c4::after{
+    width:16px;
+    height:16px;
+    top:16px;
+}
+
+.c4::before{
+    left:8px;
+}
+
+.c4::after{
+    right:8px;
+}
+
+.bottom-note{
+    margin-top:14px;
+    padding:13px 15px;
+    background:rgba(255,255,255,.12);
+    border-left:4px solid #d7b989;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:12px;
+}
+
+.bottom-note b{
+    letter-spacing:1.5px;
+    font-size:10px;
+    color:#e1c99f;
+}
+
+/* =========================================================
+   PÁGINA 5
+========================================================= */
+
+.page-rust .section-head{
+    max-width:160mm;
+}
+
+.page-rust .eyebrow{
+    color:#f0d2a6;
+}
+
+.importance-cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:rgba(255,255,255,.35);
+}
+
+.importance-cards article{
+    background:var(--rust);
+    min-height:53mm;
+    padding:19px;
+}
+
+.importance-cards b{
+    font-family:"Libre Baskerville",serif;
+    font-size:30px;
+    color:#f0d1a4;
+}
+
+.importance-cards h3{
+    margin:5px 0 8px;
+    font-size:22px;
+}
+
+.importance-cards p{
+    font-size:13.5px;
+    line-height:1.48;
+}
+
+.real-case{
+    margin-top:16px;
+    background:#f3ede1;
+    color:var(--ink);
+    padding:18px 20px;
+    display:grid;
+    grid-template-columns:22mm 1fr;
+    gap:20px;
+    align-items:center;
+}
+
+.case-symbol{
+    width:20mm;
+    height:20mm;
+    border:2px solid var(--rust);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-family:"Libre Baskerville",serif;
+    font-size:35px;
+    color:var(--rust);
+}
+
+.real-case .eyebrow{
+    color:var(--rust);
+    margin-bottom:4px;
+}
+
+.real-case h3{
+    margin-bottom:6px;
+}
+
+/* =========================================================
+   PÁGINA 6
+========================================================= */
+
+.meiosis-map{
+    min-height:95mm;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:15px;
+    background:var(--sand);
+}
+
+.cell{
+    width:24mm;
+    height:24mm;
+    border-radius:50%;
+    background:var(--olive);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-family:"Libre Baskerville",serif;
+    font-size:23px;
+    border:4px solid #f3eee4;
+}
+
+.cell.big{
+    width:38mm;
+    height:38mm;
+    background:var(--rust);
+    font-size:30px;
+}
+
+.cell.small{
+    width:19mm;
+    height:19mm;
+    font-size:16px;
+}
+
+.arrow{
+    font-size:30px;
+    color:var(--rust);
+    font-weight:700;
+}
+
+.definition-band{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:40mm 1fr;
+    gap:22px;
+    align-items:center;
+    padding:17px 20px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.definition-band b{
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--rust);
+}
+
+.definition-band p{
+    font-size:15px;
+}
+
+/* =========================================================
+   PÁGINAS 7-8 · MEIOSIS
+========================================================= */
+
+.meiotic-cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    flex:1;
+}
+
+.meiotic-cards article{
+    background:#f5f1e7;
+    color:var(--ink);
+    padding:17px;
+    position:relative;
+    min-height:61mm;
+    border-left:5px solid var(--rust);
+}
+
+.meiotic-cards article > span{
+    display:block;
+    font-family:"Libre Baskerville",serif;
+    font-size:27px;
+    color:var(--rust);
+    margin-bottom:5px;
+}
+
+.meiotic-cards h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.meiotic-cards p{
+    font-size:13px;
+    line-height:1.48;
+    max-width:90mm;
+}
+
+.cross-art,
+.pair-art,
+.split-art,
+.two-art{
+    position:absolute;
+    right:18px;
+    bottom:13px;
+    width:55px;
+    height:55px;
+    border:2px solid var(--olive);
+    border-radius:50%;
+}
+
+.cross-art i{
+    position:absolute;
+    width:6px;
+    height:34px;
+    background:var(--rust);
+    border-radius:5px;
+    transform:rotate(35deg);
+    top:8px;
+}
+
+.cross-art i:first-child{
+    left:19px;
+}
+
+.cross-art i:nth-child(2){
+    left:30px;
+    background:var(--olive);
+}
+
+.cross-art b{
+    position:absolute;
+    left:23px;
+    top:17px;
+    font-size:17px;
+    color:white;
+}
+
+.pair-art::before,
+.pair-art::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:35px;
+    border-radius:5px;
+    top:8px;
+}
+
+.pair-art::before{
+    left:17px;
+    background:var(--rust);
+}
+
+.pair-art::after{
+    right:17px;
+    background:var(--olive);
+}
+
+.split-art::before,
+.split-art::after{
+    content:"";
+    position:absolute;
+    width:7px;
+    height:30px;
+    border-radius:5px;
+    top:11px;
+}
+
+.split-art::before{
+    left:6px;
+    background:var(--rust);
+}
+
+.split-art::after{
+    right:6px;
+    background:var(--olive);
+}
+
+.two-art::before,
+.two-art::after{
+    content:"";
+    position:absolute;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    top:17px;
+}
+
+.two-art::before{
+    left:7px;
+    background:var(--rust);
+}
+
+.two-art::after{
+    right:7px;
+    background:var(--olive);
+}
+
+.crossing-band{
+    margin-top:14px;
+    padding:12px 16px;
+    background:rgba(255,255,255,.12);
+    display:grid;
+    grid-template-columns:35mm 1fr 20px 50mm;
+    gap:10px;
+    align-items:center;
+    font-size:11px;
+}
+
+.crossing-band b{
+    color:#ead09e;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.crossing-band strong{
+    font-size:22px;
+}
+
+.crossing-band em{
+    font-style:normal;
+    color:#ead09e;
+    font-weight:700;
+}
+
+.result-strip{
+    margin-top:14px;
+    padding:14px;
+    background:var(--olive);
+    color:white;
+    display:grid;
+    grid-template-columns:1fr 30px 1fr 30px 1fr;
+    align-items:center;
+    text-align:center;
+}
+
+.result-strip strong{
+    display:block;
+    font-family:"Libre Baskerville",serif;
+    font-size:30px;
+}
+
+.result-strip span{
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.arrow-big{
+    font-size:25px;
+    color:#ddc394;
+}
+
+/* =========================================================
+   PÁGINA 9 · TABLA
+========================================================= */
+
+.compare{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+    background:#f8f3e9;
+    color:var(--ink);
+}
+
+.compare th{
+    background:var(--ink);
+    color:#fff;
+    text-align:left;
+    padding:12px;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.compare td{
+    padding:10px 12px;
+    border-bottom:1px solid #c9c0af;
+    vertical-align:top;
+    line-height:1.4;
+}
+
+.compare td:first-child{
+    font-weight:700;
+    width:28%;
+}
+
+.compare tr:nth-child(even) td{
+    background:#eee7d9;
+}
+
+.similarities{
+    margin-top:15px;
+    display:grid;
+    grid-template-columns:30mm 1fr 1fr 1fr;
+    gap:10px;
+    align-items:center;
+    padding:13px;
+    background:#f3ede0;
+    color:var(--ink);
+}
+
+.similarities b{
+    color:var(--rust);
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.similarities span{
+    font-size:11px;
+    line-height:1.35;
+}
+
+/* =========================================================
+   PÁGINA 10 · VOCABULARIO
+========================================================= */
+
+.vocab{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+}
+
+.vocab article{
+    padding:17px;
+    min-height:38mm;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.vocab b{
+    display:block;
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--rust);
+    margin-bottom:8px;
+}
+
+.vocab p{
+    font-size:13px;
+    line-height:1.45;
+}
+
+.memory{
+    margin-top:auto;
+    background:var(--olive);
+    color:white;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.memory b{
+    color:#e1c795;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.memory span{
+    font-size:13px;
+}
+
+/* =========================================================
+   PÁGINA 11 · QUIZ
+========================================================= */
+
+.quiz{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.quiz article{
+    background:#f1ecdf;
+    color:var(--ink);
+    padding:15px;
+    border-left:4px solid var(--olive);
+}
+
+.quiz h3{
+    font-size:16px;
+    margin-bottom:12px;
+    line-height:1.35;
+}
+
+.quiz label{
+    display:block;
+    font-size:13px;
+    margin:8px 0;
+    cursor:pointer;
+}
+
+.quiz input{
+    margin-right:7px;
+    accent-color:var(--rust);
+}
+
+.action{
+    grid-column:1 / -1;
+    border:0;
+    background:var(--rust);
+    color:white;
+    padding:14px 20px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+.action:hover{
+    background:var(--rust-dark);
+}
+
+#quiz-result{
+    grid-column:1 / -1;
+    min-height:30px;
+    font-size:16px;
+    font-weight:700;
+    text-align:center;
+    padding:8px;
+}
+
+/* =========================================================
+   PÁGINA 12 · SOPA
+========================================================= */
+
+.search-layout{
+    display:grid;
+    grid-template-columns:1fr 52mm;
+    gap:25px;
+    align-items:start;
+}
+
+.word-grid{
+    width:100%;
+    aspect-ratio:1/1;
+    display:grid;
+    grid-template-columns:repeat(15,1fr);
+    background:#e6dfd1;
+    border:2px solid var(--ink);
+}
+
+.letter{
+    border:1px solid #b8ae9d;
+    display:grid;
+    place-items:center;
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink);
+    cursor:pointer;
+    user-select:none;
+    background:#f7f3ea;
+}
+
+.letter:hover{
+    background:#dcd4c4;
+}
+
+.letter.selected{
+    background:var(--rust);
+    color:white;
+}
+
+.letter.found{
+    background:var(--olive);
+    color:white;
+}
+
+.search-layout aside{
+    background:var(--sand);
+    padding:18px;
+}
+
+.search-layout aside .eyebrow{
+    color:var(--rust);
+}
+
+#word-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:5px;
+    margin:13px 0 18px;
+}
+
+#word-list li{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+#word-list li.found{
+    text-decoration:line-through;
+    color:var(--olive);
+}
+
+.search-layout aside .action{
+    width:100%;
+}
+
+#word-message{
+    margin-top:12px;
+    font-size:11px;
+    line-height:1.4;
+}
+
+/* =========================================================
+   PÁGINA 13
+========================================================= */
+
+.real-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.real-grid article{
+    background:#f7f1e6;
+    color:var(--ink);
+    padding:16px;
+}
+
+.real-grid img{
+    width:100%;
+    height:60mm;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.real-grid .eyebrow{
+    color:var(--rust);
+    margin-bottom:5px;
+}
+
+.real-grid h3{
+    margin-bottom:9px;
+}
+
+.real-grid p{
+    font-size:13px;
+    line-height:1.5;
+}
+
+.real-grid ul{
+    margin:12px 0 0 17px;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.gamete-diagram{
+    height:60mm;
+    background:var(--sand);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:13px;
+    margin-bottom:15px;
+    color:var(--ink);
+}
+
+.gamete-diagram span,
+.gamete-diagram strong{
+    width:24mm;
+    height:24mm;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-family:"Libre Baskerville",serif;
+    font-size:24px;
+    background:var(--olive);
+    color:white;
+}
+
+.gamete-diagram strong{
+    background:var(--rust);
+}
+
+.gamete-diagram b{
+    font-size:24px;
+}
+
+.summary-line{
+    margin-top:15px;
+    padding:14px 17px;
+    border-top:1px solid rgba(255,255,255,.4);
+    border-bottom:1px solid rgba(255,255,255,.4);
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.summary-line b{
+    font-size:10px;
+    letter-spacing:1.5px;
+    color:#f0d1a4;
+}
+
+.summary-line span{
+    font-size:13px;
+}
+
+/* =========================================================
+   PÁGINA 14
+========================================================= */
+
+.review{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.review button{
+    border:0;
+    background:#33342d;
+    color:white;
+    padding:15px;
+    text-align:left;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:12px;
+    cursor:pointer;
+    min-height:31mm;
+}
+
+.review button:hover{
+    background:#414239;
+}
+
+.review button > b{
+    font-family:"Libre Baskerville",serif;
+    font-size:20px;
+    color:#d8bc89;
+}
+
+.review button > span{
+    font-size:13px;
+    line-height:1.4;
+}
+
+.review em{
+    display:none;
+    margin-top:8px;
+    color:#e2dccf;
+    font-size:12px;
+    line-height:1.45;
+    font-style:normal;
+}
+
+.review em.show{
+    display:block;
+}
+
+.truefalse{
+    margin-top:auto;
+    display:grid;
+    grid-template-columns:30mm 1fr 1fr 1fr;
+    gap:10px;
+    align-items:center;
+    padding:14px;
+    border-top:1px solid rgba(255,255,255,.35);
+    border-bottom:1px solid rgba(255,255,255,.35);
+}
+
+.truefalse b{
+    color:#d8bc89;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.truefalse span{
+    padding:9px;
+    border:1px solid rgba(255,255,255,.3);
+    font-size:11px;
+    cursor:pointer;
+}
+
+.truefalse span.mark{
+    background:var(--rust);
+}
+
+/* =========================================================
+   PÁGINA 15
+========================================================= */
+
+.sources{
+    border-top:1px solid var(--line);
+}
+
+.sources article{
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:55mm 1fr;
+    gap:20px;
+}
+
+.sources b{
+    font-family:"Libre Baskerville",serif;
+    font-size:16px;
+}
+
+.sources p{
+    font-size:13px;
+    line-height:1.5;
+}
+
+.closing{
+    margin-top:auto;
+    padding:25px 0;
+    border-top:2px solid var(--ink);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.closing strong{
+    font-family:"Libre Baskerville",serif;
+    font-size:25px;
+}
+
+.closing span{
+    font-size:12px;
+    color:var(--muted);
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.nav{
+    position:fixed;
+    left:50%;
+    bottom:18px;
+    transform:translateX(-50%);
+    z-index:1000;
+    background:#25251f;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:8px 12px;
+    border-radius:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.nav button{
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:#777c68;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.nav button:hover{
+    background:var(--rust);
+}
+
+.nav span{
+    min-width:60px;
+    text-align:center;
+    font-size:11px;
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    body{
+        background:var(--paper);
+    }
+
+    .page{
+        width:100vw;
+        height:auto;
+        min-height:100vh;
+        max-height:none;
+        margin:0;
+        box-shadow:none;
+        padding:30px 25px 80px;
+    }
+
+    .cover{
+        min-height:100vh;
+    }
+
+    h2{
+        font-size:34px;
+    }
+
+    .cover h1{
+        font-size:57px;
+    }
+
+    .page-intro{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .number-card{
+        width:100%;
+        height:auto;
+        min-height:100px;
+    }
+
+    .phase-grid,
+    .meiotic-cards,
+    .importance-cards,
+    .real-grid,
+    .quiz,
+    .review{
+        grid-template-columns:1fr;
+    }
+
+    .image-text{
+        grid-template-columns:1fr;
+    }
+
+    .image-text img{
+        height:55vw;
+    }
+
+    .three-columns{
+        grid-template-columns:1fr;
+    }
+
+    .three-columns article{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+    }
+
+    .fact-band{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .search-layout{
+        grid-template-columns:1fr;
+    }
+
+    .compare{
+        font-size:10px;
+    }
+
+    .compare td,
+    .compare th{
+        padding:7px;
+    }
+
+    .similarities{
+        grid-template-columns:1fr;
+    }
+
+    .sources article{
+        grid-template-columns:1fr;
+    }
+
+    .truefalse{
+        grid-template-columns:1fr;
+    }
+
+    .crossing-band{
+        grid-template-columns:1fr;
+    }
+
+    .cover-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cover-meta{
+        text-align:left;
+    }
+
+}
+
+/* =========================================================
+   IMPRESIÓN / PDF
+========================================================= */
+
+@media print{
+
+    @page{
+        size:A4 portrait;
+        margin:0;
+    }
+
+    body{
+        background:white;
+    }
+
+    .page{
+        width:210mm;
+        height:297mm;
+        min-height:297mm;
+        max-height:297mm;
+        margin:0;
+        box-shadow:none;
+        display:flex !important;
+        page-break-after:always;
+        break-after:page;
+    }
+
+    .page:last-of-type{
+        page-break-after:auto;
+        break-after:auto;
+    }
+
+    .nav{
+        display:none !important;
+    }
+
+    button{
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+    }
+
+    *{
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+    }
+}
